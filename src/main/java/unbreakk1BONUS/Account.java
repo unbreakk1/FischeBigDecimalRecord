@@ -30,8 +30,30 @@ public class Account
 
     public void setCustomer(Client customer) {this.customer = customer;}
 
+    // Method to deposit money into the account
+    public void deposit(BigDecimal amount)
+    {
+        if (amount.compareTo(BigDecimal.ZERO) <= 0)
+            throw new IllegalArgumentException("Deposit amount must be greater than zero.");
+
+        this.accountBalance = this.accountBalance.add(amount);
+    }
+
+    // Method to withdraw money from the account
+    public void withdraw(BigDecimal amount)
+    {
+        if (amount.compareTo(BigDecimal.ZERO) <= 0)
+            throw new IllegalArgumentException("Withdrawal amount must be greater than zero.");
+
+        if (this.accountBalance.compareTo(amount) < 0)
+            throw new IllegalArgumentException("Insufficient balance for withdrawal.");
+
+        this.accountBalance = this.accountBalance.subtract(amount);
+    }
+
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Account{" +
                 "accountNumber='" + accountNumber + '\'' +
                 ", accountBalance=" + accountBalance +
