@@ -13,21 +13,27 @@ public class Main
         Client alice = new Client("Alice", "Smith", "CUST001");
         Client bob = new Client("Bob", "Johnson", "CUST002");
 
-        // Create a joint account
-        Account jointAccount = new Account("ACC001", new BigDecimal("0.03"), List.of(alice, bob));
+        // Create Accounts
+        Account account1 = new Account("ACC001", new BigDecimal("1000.00"), List.of(alice));
+        Account account2 = new Account("ACC002", new BigDecimal("500.00"), List.of(bob));
+        Account jointAccount = new Account("ACC003", new BigDecimal("2000.00"), List.of(alice, bob));
+
+        // Add Accounts to Bank
+        bankService.addAccount(account1);
+        bankService.addAccount(account2);
         bankService.addAccount(jointAccount);
 
-        // Display initial account
-        System.out.println("Initial Joint Account:");
-        System.out.println(jointAccount);
+        // Display Accounts Before Interest
+        System.out.println("Accounts Before Credit Interest:");
+        bankService.displayAccounts();
 
-        // Split the joint account
-        System.out.println("\nSplitting the account...");
-        List<String> newAccountNumbers = bankService.split("ACC001");
+        // Credit Interest
+        BigDecimal interestRate = new BigDecimal("5.0"); // 5% interest rate
+        bankService.creditInterest(interestRate);
 
-        // Display the new account numbers
-        System.out.println("New Individual Account Numbers:");
-        newAccountNumbers.forEach(System.out::println);
+        // Display Accounts After Interest
+        System.out.println("\nAccounts After Credit Interest:");
+        bankService.displayAccounts();
     }
 
 }

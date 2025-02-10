@@ -70,4 +70,34 @@ public class BankService
     {
         return "ACC" + (accounts.size() + 1);
     }
+
+    // Method that calculates and credits interest to all accounts
+    public void creditInterest(BigDecimal interestRate)
+    {
+        if (interestRate.compareTo(BigDecimal.ZERO) < 0)
+        {
+            throw new IllegalArgumentException("Interest rate cannot be negative.");
+        }
+
+        for (Account account : accounts)
+        {
+            // Calculate interest: Interest = Account Balance * (Interest Rate / 100)
+            BigDecimal interest = account.getAccountBalance()
+                    .multiply(interestRate)
+                    .divide(BigDecimal.valueOf(100), BigDecimal.ROUND_HALF_DOWN);
+
+            // Add the calculated interest to the account balance
+            account.setAccountBalance(account.getAccountBalance().add(interest));
+        }
+    }
+
+    // Method to display all accounts (for testing purposes)
+    public void displayAccounts()
+    {
+        for (Account account : accounts)
+        {
+            System.out.println(account);
+        }
+    }
+
 }
