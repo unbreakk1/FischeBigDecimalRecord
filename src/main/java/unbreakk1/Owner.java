@@ -1,4 +1,5 @@
 package unbreakk1;
 
-public record Owner() {
+public record Owner(String name, int age, String address)
+{
 }
