@@ -56,7 +56,7 @@ public class Account
         return "Account{" +
                 "accountNumber='" + accountNumber + '\'' +
                 ", accountBalance=" + accountBalance +
-                ", customer=" + customer +
+                ", customers=" + customers +
                 '}';
     }
 
