@@ -1,33 +1,53 @@
 package unbreakk1BONUS;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Account
 {
-    private String accountNumber;      // Account Number
-    private BigDecimal accountBalance; // Account Balance
-    private List<Client> customers;           // Associated Client
+    private String accountNumber;             // Account Number
+    private List<Transaction> transactions;  // List of all transactions
+    private List<Client> customers;          // Associated Clients
+    // Associated Client
 
 
-    public Account(String accountNumber, BigDecimal accountBalance, List<Client> customers) {
+    // Constructor
+    public Account(String accountNumber, List<Client> customers) {
         this.accountNumber = accountNumber;
-        this.accountBalance = accountBalance;
+        this.transactions = new ArrayList<>(); // Initialize an empty list of transactions
         this.customers = customers;
     }
 
-    // Getters and Setters
-    public String getAccountNumber() {return accountNumber;}
+    // Getter and Setter for accountNumber
+    public String getAccountNumber() {
+        return accountNumber;
+    }
 
-    public void setAccountNumber(String accountNumber) {this.accountNumber = accountNumber;}
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
-    public BigDecimal getAccountBalance() {return accountBalance;}
+    // Getter for customers
+    public List<Client> getCustomers() {
+        return customers;
+    }
 
-    public void setAccountBalance(BigDecimal accountBalance) {this.accountBalance = accountBalance;}
+    public void setCustomers(List<Client> customers) {
+        this.customers = customers;
+    }
 
-    public List<Client> getCustomers() {return customers;}
+    // Get all transactions (unmodifiable for immutability)
+    public List<Transaction> getTransactions() {
+        return Collections.unmodifiableList(transactions);
+    }
 
-    public void setCustomers(List<Client> customers) {this.customers = customers;}
+    // Add a transaction to the account
+    public void addTransaction(Transaction transaction) {
+        transactions.add(transaction);
+    }
+
 
     // Method to deposit money into the account
     public void deposit(BigDecimal amount)
