@@ -1,48 +1,34 @@
 package unbreakk1BONUS;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Main
 {
     public static void main(String[] args)
     {
-        Client client1 = new Client("Alice", "Smith", "CUST001");
+        BankService bankService = new BankService();
 
-        // Create an Account object
-        Account account1 = new Account("ACC001", new BigDecimal("2000.50"), client1);
+        // Create Clients
+        Client alice = new Client("Alice", "Smith", "CUST001");
+        Client bob = new Client("Bob", "Johnson", "CUST002");
 
-        // Display initial account details
-        System.out.println("Initial Account Details:");
-        System.out.println(account1);
+        // Create a joint account
+        Account jointAccount = new Account("ACC001", new BigDecimal("0.03"), List.of(alice, bob));
+        bankService.addAccount(jointAccount);
 
-        // Deposit money
-        System.out.println("\nDepositing 500.75...");
-        account1.deposit(new BigDecimal("500.75"));
-        System.out.println("Updated Account Details:");
-        System.out.println(account1);
+        // Display initial account
+        System.out.println("Initial Joint Account:");
+        System.out.println(jointAccount);
 
-        // Withdraw money
-        System.out.println("\nWithdrawing 1000.25...");
-        account1.withdraw(new BigDecimal("1000.25"));
-        System.out.println("Updated Account Details:");
-        System.out.println(account1);
+        // Split the joint account
+        System.out.println("\nSplitting the account...");
+        List<String> newAccountNumbers = bankService.split("ACC001");
 
-        // Attempt to withdraw more than the balance
-        try {
-            System.out.println("\nAttempting to withdraw 3000.00...");
-            account1.withdraw(new BigDecimal("3000.00"));
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-
-        // Attempt to deposit a negative amount
-        try {
-            System.out.println("\nAttempting to deposit -100...");
-            account1.deposit(new BigDecimal("-100"));
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-
-
+        // Display the new account numbers
+        System.out.println("New Individual Account Numbers:");
+        newAccountNumbers.forEach(System.out::println);
     }
+
 }
+

@@ -1,34 +1,33 @@
 package unbreakk1BONUS;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Account
 {
     private String accountNumber;      // Account Number
     private BigDecimal accountBalance; // Account Balance
-    private Client customer;           // Associated Client
+    private List<Client> customers;           // Associated Client
 
 
-    public Account(String accountNumber, BigDecimal accountBalance, Client customer) {
+    public Account(String accountNumber, BigDecimal accountBalance, List<Client> customers) {
         this.accountNumber = accountNumber;
         this.accountBalance = accountBalance;
-        this.customer = customer;
+        this.customers = customers;
     }
 
-    // Getter and Setter for accountNumber
+    // Getters and Setters
     public String getAccountNumber() {return accountNumber;}
 
     public void setAccountNumber(String accountNumber) {this.accountNumber = accountNumber;}
 
-    // Getter and Setter for accountBalance
     public BigDecimal getAccountBalance() {return accountBalance;}
 
     public void setAccountBalance(BigDecimal accountBalance) {this.accountBalance = accountBalance;}
 
-    // Getter and Setter for customer
-    public Client getCustomer() {return customer;}
+    public List<Client> getCustomers() {return customers;}
 
-    public void setCustomer(Client customer) {this.customer = customer;}
+    public void setCustomers(List<Client> customers) {this.customers = customers;}
 
     // Method to deposit money into the account
     public void deposit(BigDecimal amount)
