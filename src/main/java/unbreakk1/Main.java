@@ -8,19 +8,16 @@ public class Main
         Species catSpecies = new Species("Cat", 300);  // Food requirement: 300 grams/day
         Species parrotSpecies = new Species("Parrot", 150); // Food requirement: 150 grams/day
 
-        // Create Owner instances
         Owner owner1 = new Owner("John McFluffypants", 40, "100 Rainbow Road");
         Owner owner2 = new Owner("Sally Snickerdoodle", 32, "999 Candy Cane Lane");
 
-        // Create Animal instances and share Species instances
         Animal animal1 = new Animal(1, "Sir Barkington", dogSpecies, 5, owner1);
         Animal animal2 = new Animal(2, "Meowzilla", catSpecies, 3, owner2);
-        Animal animal3 = new Animal(3, "Chirpy McFeathers", parrotSpecies, 2, owner1); // Another animal owned by John
-        Animal animal4 = new Animal(4, "Fluffy", dogSpecies, 7, owner2); // Another dog with the same species
+        Animal animal3 = new Animal(3, "Chirpy McFeathers", parrotSpecies, 2, owner1);
+        Animal animal4 = new Animal(4, "Fluffy", dogSpecies, 7, owner2);
 
-        // Test the toString method for both Animal, Owner, and Species
         System.out.println("== Testing toString Methods ==");
-        System.out.println(animal1); // Includes Species details
+        System.out.println(animal1);
         System.out.println(animal2);
         System.out.println(animal3);
         System.out.println(animal4);
