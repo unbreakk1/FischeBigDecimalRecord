@@ -45,6 +45,8 @@ public class MainBonusOne
         // Print updated animals
         System.out.println("\nUpdated Animal 1 (Name):");
         System.out.println(updatedAnimal1);
+        System.out.println("\nUpdated Animal 2 (Age):" + updatedAnimal2);
+        System.out.println("\nUpdated Animal 3 (Owner):" + updatedAnimal3);
 
     }
 }
